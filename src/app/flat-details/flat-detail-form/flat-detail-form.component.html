@@ -1,0 +1,45 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" [value]="service.formData.id" />
+    <div class="form-group">
+        <label>FLAT NAME</label>
+        <input class="form-control form-control-lg" placeholder="Flat Name" name="name" #name="ngModel"
+            [(ngModel)]="service.formData.name" required maxlength="50"
+            [class.invalid]="name.invalid && name.touched">
+    </div>
+    <div class="form-group">
+        <label>CATEGORY</label>
+        <input class="form-control form-control-lg" placeholder="Flat Category" name="category" #category="ngModel"
+            [(ngModel)]="service.formData.category" required maxlength="50"
+            [class.invalid]="category.invalid && category.touched">
+    </div>
+    <div class="form-group">
+        <label>METER NO</label>
+        <input class="form-control form-control-lg" placeholder="Flat Meter Number" name="meterNo" #meterNo="ngModel"
+            [(ngModel)]="service.formData.meterNo" required maxlength="50"
+            [class.invalid]="meterNo.invalid && meterNo.touched">
+    </div>
+    <div class="form-group">
+        <label>DESCRIPTION</label>
+        <textarea class="form-control form-control-lg" rows="4" placeholder="Flat Description" name="description"
+            #description="ngModel" [(ngModel)]="service.formData.description" maxlength="200">
+        </textarea>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>RENT</label>
+            <input class="form-control form-control-lg" placeholder="Flat Rent" name="rent" #rent="ngModel"
+                [(ngModel)]="service.formData.rent" required [class.invalid]="rent.invalid && rent.touched">
+        </div>
+        <!-- <div class="form-group col-md-6">
+            <label>STATUS</label>
+            <select class="form-control form-control-lg" name="status" #status="ngModel"
+                [(ngModel)]="service.formData.status">
+                <option value="true">Allocated</option>
+                <option value="false">Free</option>
+            </select>
+        </div> -->
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info btn-block" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>
