@@ -19,14 +19,38 @@ export class FlatDetailFormComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
+    if(this.service.formData.id == 0){
+      this.insertRecord(form);
+    }
+    else{
+      this.updateRecord(form);
+    }
+  }
+
+  insertRecord(form:NgForm){
     this.service.postFlatDetail().subscribe(
       res => {
         this.resetForm(form);
-        this.toastr.success('Saved Successfully', 'Flat Detail Register');
+        this.service.getFlatList();
+        this.toastr.success('Saved Successfully!', 'Flat Detail Register');
       },
       err => {
         console.log(err);
-        
+        this.toastr.error('Could not Save Data', 'Flat Detail Register');
+      }
+    );
+  }
+
+  updateRecord(form:NgForm){
+    this.service.putFlatDetail().subscribe(
+      res => {
+        this.resetForm(form);
+        this.service.getFlatList();
+        this.toastr.info('Updated Successfully!', 'Flat Detail Register');
+      },
+      err => {
+        console.log(err);
+        this.toastr.error('Could not Save Data', 'Flat Detail Register');
       }
     );
   }

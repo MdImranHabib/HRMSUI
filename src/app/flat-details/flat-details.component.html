@@ -6,6 +6,30 @@
         <app-flat-detail-form></app-flat-detail-form>
     </div>
     <div class="col-md-7">
-        <span>List of Flat Details</span>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Meter No</th>
+                    <th>Rent</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flat of service.list">
+                    <td (click)="populateForm(flat)">{{flat.name}}</td>
+                    <td (click)="populateForm(flat)">{{flat.category}}</td>
+                    <td (click)="populateForm(flat)">{{flat.meterNo}}</td>
+                    <td (click)="populateForm(flat)">{{flat.rent}}</td>
+                    <td (click)="populateForm(flat)">{{flat.status}}</td>
+                    <td>                        
+                        <i class="fa fa-info-circle fa-lg text-info" (click)="onDetails(flat.id)"></i>&nbsp;|
+                        <i class="fa fa-trash-alt fa-lg text-danger" (click)="onDelete(flat.id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
