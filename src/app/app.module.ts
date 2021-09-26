@@ -8,12 +8,16 @@ import { FlatDetailFormComponent } from './flat-details/flat-detail-form/flat-de
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { ResidentDetailsComponent } from './resident-details/resident-details.component';
+import { ResidentDetailFormComponent } from './resident-details/resident-detail-form/resident-detail-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FlatDetailsComponent,
-    FlatDetailFormComponent
+    FlatDetailFormComponent,
+    ResidentDetailsComponent,
+    ResidentDetailFormComponent
   ],
   imports: [
     BrowserModule,
