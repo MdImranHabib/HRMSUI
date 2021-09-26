@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ResidentDetailsComponent } from './resident-details/resident-details.component';
 import { ResidentDetailFormComponent } from './resident-details/resident-detail-form/resident-detail-form.component';
+import { RentDetailsComponent } from './rent-details/rent-details.component';
+import { RentDetailFormComponent } from './rent-details/rent-detail-form/rent-detail-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ResidentDetailFormComponent } from './resident-details/resident-detail-
     FlatDetailsComponent,
     FlatDetailFormComponent,
     ResidentDetailsComponent,
-    ResidentDetailFormComponent
+    ResidentDetailFormComponent,
+    RentDetailsComponent,
+    RentDetailFormComponent
   ],
   imports: [
     BrowserModule,
