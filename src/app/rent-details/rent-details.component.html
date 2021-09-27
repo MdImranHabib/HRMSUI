@@ -1,1 +1,45 @@
-<p>rent-details works!</p>
+<div class="jumbotron py-2">
+    <h3 class="display-5 text-center">Rent Detail Register</h3>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <app-rent-detail-form></app-rent-detail-form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Flat Name</th>
+                    <th>Rent Month</th>
+                    <th>Flat Rent</th>
+                    <th>Electric Bill</th>
+                    <th>Gas Bill</th>
+                    <th>Water Bill</th>
+                    <th>Total Bill</th>
+                    <th>Paid</th>
+                    <th>Due</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rent of service.rentList">
+                    <td (click)="populateForm(rent)">{{rent.flat.name}}</td>
+                    <td (click)="populateForm(rent)">{{rent.rentMonth}}</td>
+                    <td (click)="populateForm(rent)">{{rent.flatRent}}</td>
+                    <td (click)="populateForm(rent)">{{rent.electricBill}}</td>
+                    <td (click)="populateForm(rent)">{{rent.gasBill}}</td>
+                    <td (click)="populateForm(rent)">{{rent.waterBill}}</td>
+                    <td (click)="populateForm(rent)">{{rent.totalBill}}</td>
+                    <td (click)="populateForm(rent)">{{rent.paid}}</td>
+                    <td (click)="populateForm(rent)">{{rent.totalBill - rent.paid}}</td>
+                    <td>                        
+                        <i class="fa fa-info-circle fa-lg text-info" (click)="onDetails(rent.id)"></i>&nbsp;|
+                        <i class="fa fa-trash-alt fa-lg text-danger" (click)="onDelete(rent.id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

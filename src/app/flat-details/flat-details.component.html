@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let flat of service.list">
+                <tr *ngFor="let flat of service.flatList">
                     <td (click)="populateForm(flat)">{{flat.name}}</td>
                     <td (click)="populateForm(flat)">{{flat.category}}</td>
                     <td (click)="populateForm(flat)">{{flat.meterNo}}</td>

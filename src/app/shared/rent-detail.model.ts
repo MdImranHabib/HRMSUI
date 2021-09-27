@@ -10,7 +10,7 @@ export class RentDetail {
     waterBill:number=0;
     totalBill:number=0;
     paid:number=0;
-    date:string='';
+    date:string='0001-01-01'; //initialize demo date
     remarks:string='';
     flat:FlatDetail;
 }

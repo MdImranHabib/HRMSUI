@@ -11,7 +11,7 @@ export class FlatDetailService {
   constructor(private http:HttpClient) { }
 
   formData: FlatDetail= new FlatDetail();
-  list: FlatDetail[];
+  flatList: FlatDetail[];
   flat:FlatDetail;
 
   postFlatDetail(){
@@ -21,7 +21,7 @@ export class FlatDetailService {
   getFlatList(){
     this.http.get(environment.baseURL + 'api/flats')
     .toPromise()
-    .then(res => this.list = res as FlatDetail[]);
+    .then(res => this.flatList = res as FlatDetail[]);
   }
 
   putFlatDetail(){    

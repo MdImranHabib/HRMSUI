@@ -11,7 +11,7 @@ export class ResidentDetailService {
   constructor(private http:HttpClient) { }
 
   formData: ResidentDetail= new ResidentDetail();
-  list: ResidentDetail[];
+  residentList: ResidentDetail[];
   resident:ResidentDetail;
 
   postResidentDetail(){
@@ -21,7 +21,7 @@ export class ResidentDetailService {
   getResidentList(){
     this.http.get(environment.baseURL + 'api/residents')
     .toPromise()
-    .then(res => this.list = res as ResidentDetail[]);
+    .then(res => this.residentList = res as ResidentDetail[]);
   }
 
   putResidentDetail(){    

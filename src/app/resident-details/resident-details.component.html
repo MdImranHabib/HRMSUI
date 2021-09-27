@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let resident of service.list">
+                <tr *ngFor="let resident of service.residentList">
                     <td (click)="populateForm(resident)">{{resident.name}}</td>
                     <!-- <td (click)="populateForm(resident)">{{resident.email}}</td> -->
                     <td (click)="populateForm(resident)">{{resident.contactNo}}</td>

@@ -11,17 +11,18 @@ export class RentDetailService {
   constructor(private http:HttpClient) { }
 
   formData: RentDetail= new RentDetail();
-  list: RentDetail[];
+  rentList: RentDetail[];
   rent:RentDetail;
 
   postRentDetail(){
+    this.formData.flatId = Number(this.formData.flatId);  
     return this.http.post(environment.baseURL + 'api/rents', this.formData);
   }
 
   getRentList(){
     this.http.get(environment.baseURL + 'api/rents')
     .toPromise()
-    .then(res => this.list = res as RentDetail[]);
+    .then(res => this.rentList = res as RentDetail[]);
   }
 
   putRentDetail(){    

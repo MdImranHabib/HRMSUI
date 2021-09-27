@@ -1,1 +1,67 @@
-<p>rent-detail-form works!</p>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" [value]="service.formData.id" />
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>FLAT</label>
+            <select class="form-control" placeholder="Flat Name" name="flatId" #flatId="ngModel"
+                [(ngModel)]="service.formData.flatId" required [class.invalid]="flatId.invalid && flatId.touched">
+                <option *ngFor="let flat of flatService.flatList" [value]=flat.id>{{flat.name}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label>RENT MONTH</label>
+            <select class="form-control" placeholder="Select Rent Month" name="rentMonth" #rentMonth="ngModel"
+                [(ngModel)]="service.formData.rentMonth" required [class.invalid]="rentMonth.invalid && rentMonth.touched">
+                <option *ngFor="let item of months" [value]="item">{{item}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-2">
+            <label>FLAT RENT</label>
+            <input type="number" class="form-control" placeholder="Flat Rent" name="flatRent" #flatRent="ngModel"
+                [(ngModel)]="service.formData.flatRent" required [class.invalid]="flatRent.invalid && flatRent.touched">
+        </div>
+        <div class="form-group col-md-2">
+            <label>ELECTRIC BILL</label>
+            <input type="number" class="form-control" placeholder="Electric Bill" name="electricBill" #electricBill="ngModel"
+                [(ngModel)]="service.formData.electricBill" required [class.invalid]="electricBill.invalid && electricBill.touched">
+        </div>
+        <div class="form-group col-md-2">
+            <label>GAS BILL</label>
+            <input type="number" class="form-control" placeholder="Gas Bill" name="gasBill" #gasBill="ngModel"
+                [(ngModel)]="service.formData.gasBill" required [class.invalid]="gasBill.invalid && gasBill.touched">
+        </div>
+        <div class="form-group col-md-2">
+            <label>WATER BILL</label>
+            <input type="number" class="form-control" placeholder="Water Bill" name="waterBill" #waterBill="ngModel"
+                [(ngModel)]="service.formData.waterBill" required [class.invalid]="waterBill.invalid && waterBill.touched">
+        </div>
+        <div class="form-group col-md-2">
+            <label>TOTAL BILL</label>
+            <input type="number" class="form-control" placeholder="Total Bill" name="totalBill" #totalBill="ngModel"
+                [(ngModel)]="service.formData.totalBill" required [class.invalid]="totalBill.invalid && totalBill.touched">
+        </div>
+        <div class="form-group col-md-2">
+            <label>PAID</label>
+            <input type="number" class="form-control" placeholder="Paid" name="paid" #paid="ngModel"
+                [(ngModel)]="service.formData.paid" required [class.invalid]="paid.invalid && paid.touched">
+        </div>
+    </div>     
+    <input type="hidden" class="form-control" name="date" #date="ngModel" [(ngModel)]="service.formData.date">
+    <!-- <div class="form-group">
+        <label>Date</label>
+        <input type="date" class="form-control" name="date" #date="ngModel" [(ngModel)]="service.formData.date"
+        required [class.invalid]="date.invalid && date.touched">
+    </div> -->
+    <div class="form-group">
+        <label>REMARKS</label>
+        <textarea class="form-control" placeholder="Remarks" name="remarks" #remarks="ngModel"
+            [(ngModel)]="service.formData.remarks" maxlength="200">
+        </textarea>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-info btn-block" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>
