@@ -29,7 +29,7 @@ export class FlatDetailsComponent implements OnInit {
       .subscribe(
         res=>{
           this.service.getFlatList();
-          this.toastr.error('Deleted Successfully!', 'Flat Detail Register');
+          this.toastr.success('Deleted Successfully!', 'Flat Detail Register');
         },
         err=>{
           console.log(err);          

@@ -69,7 +69,7 @@ export class RentDetailFormComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.toastr.error('Could not Save Data', 'Rent Detail Register');
+        this.toastr.error('Could not Update Data', 'Rent Detail Register');
       }
     );
   }

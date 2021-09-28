@@ -50,7 +50,7 @@ export class ResidentDetailFormComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.toastr.error('Could not Save Data', 'Resident Detail Register');
+        this.toastr.error('Could not Update Data', 'Resident Detail Register');
       }
     );
   }

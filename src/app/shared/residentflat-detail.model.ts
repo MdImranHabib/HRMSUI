@@ -6,7 +6,7 @@ export class ResidentFlatDetail {
     residentId:number=0;
     flatId:number=0;
     arrivalDate:string='';
-    departureDate:string='';
+    departureDate?:string;
     resident:ResidentDetail;
     flat:FlatDetail;
 }

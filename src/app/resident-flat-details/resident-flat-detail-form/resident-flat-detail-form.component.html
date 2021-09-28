@@ -1,0 +1,30 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" [value]="service.formData.id" />
+    <div class="form-group">
+        <label>FLAT</label>
+            <select class="form-control" placeholder="Flat Name" name="flatId" #flatId="ngModel"
+                [(ngModel)]="service.formData.flatId" required [class.invalid]="flatId.invalid && flatId.touched">
+                <option *ngFor="let flat of flatService.flatList" [value]=flat.id>{{flat.name}}</option>
+            </select>
+    </div>
+    <div class="form-group">
+        <label>RESIDENT</label>
+            <select class="form-control" placeholder="Resident Name" name="residentId" #residentId="ngModel"
+                [(ngModel)]="service.formData.residentId" required [class.invalid]="residentId.invalid && residentId.touched">
+                <option *ngFor="let resident of residentService.residentList" [value]=resident.id>{{resident.name}}</option>
+            </select>
+    </div>
+   <div class="form-group">
+        <label>ARRIVAL DATE</label>
+        <input type="date" class="form-control" name="arrivalDate" #arrivalDate="ngModel" [(ngModel)]="service.formData.arrivalDate"
+        required [class.invalid]="arrivalDate.invalid && arrivalDate.touched">
+    </div>
+    <div class="form-group">
+        <label>DEPARTURE DATE</label>
+        <input type="date" class="form-control" name="departureDate" #departureDate="ngModel" [(ngModel)]="service.formData.departureDate"
+        [class.invalid]="departureDate.invalid && departureDate.touched">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info btn-block" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>

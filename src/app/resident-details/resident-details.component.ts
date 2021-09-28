@@ -29,7 +29,7 @@ export class ResidentDetailsComponent implements OnInit {
       .subscribe(
         res=>{
           this.service.getResidentList();
-          this.toastr.error('Deleted Successfully!', 'Resident Detail Register');
+          this.toastr.success('Deleted Successfully!', 'Resident Detail Register');
         },
         err=>{
           console.log(err);          

@@ -1,0 +1,33 @@
+<div class="jumbotron py-2">
+    <h3 class="display-5 text-center">ResidentFlat Detail Register</h3>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <app-resident-flat-detail-form></app-resident-flat-detail-form>
+    </div>
+    <div class="col-md-7">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Flat Name</th>
+                    <th>Resident Name</th>
+                    <th>Arrival Date</th>
+                    <th>Departure Date</th>                    
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let residentFlat of service.residentFlatList">
+                    <td (click)="populateForm(residentFlat)">{{residentFlat.flat.name}}</td>
+                    <td (click)="populateForm(residentFlat)">{{residentFlat.resident.name}}</td>
+                    <td (click)="populateForm(residentFlat)">{{residentFlat.arrivalDate | date}}</td>
+                    <td (click)="populateForm(residentFlat)">{{residentFlat.departureDate | date}}</td>                   
+                    <td>                        
+                        <i class="fa fa-info-circle fa-lg text-info" (click)="onDetails(residentFlat.id)"></i>&nbsp;|
+                        <i class="fa fa-trash-alt fa-lg text-danger" (click)="onDelete(residentFlat.id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

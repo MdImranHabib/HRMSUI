@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ResidentFlatDetail } from './residentflat-detail.model';
+import { ResidentFlatDetail } from './residentFlat-detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,8 @@ export class ResidentFlatDetailService {
   residentFlat:ResidentFlatDetail;
 
   postResidentFlatDetail(){
+    this.formData.flatId = Number(this.formData.flatId); 
+    this.formData.residentId = Number(this.formData.residentId); 
     return this.http.post(environment.baseURL + 'api/residentFlats', this.formData);
   }
 
@@ -24,7 +26,9 @@ export class ResidentFlatDetailService {
     .then(res => this.residentFlatList = res as ResidentFlatDetail[]);
   }
 
-  putResidentFlatDetail(){    
+  putResidentFlatDetail(){   
+    this.formData.flatId = Number(this.formData.flatId); 
+    this.formData.residentId = Number(this.formData.residentId);  
     return this.http.put(environment.baseURL + 'api/residentFlats/' + this.formData.id, this.formData);
   }
 

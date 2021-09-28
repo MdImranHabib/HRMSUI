@@ -50,7 +50,7 @@ export class FlatDetailFormComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.toastr.error('Could not Save Data', 'Flat Detail Register');
+        this.toastr.error('Could not Update Data', 'Flat Detail Register');
       }
     );
   }

@@ -12,6 +12,19 @@ import { ResidentDetailsComponent } from './resident-details/resident-details.co
 import { ResidentDetailFormComponent } from './resident-details/resident-detail-form/resident-detail-form.component';
 import { RentDetailsComponent } from './rent-details/rent-details.component';
 import { RentDetailFormComponent } from './rent-details/rent-detail-form/rent-detail-form.component';
+import { ResidentFlatDetailsComponent } from './resident-flat-details/resident-flat-details.component';
+import { ResidentFlatDetailFormComponent } from './resident-flat-details/resident-flat-detail-form/resident-flat-detail-form.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'flat-details', component: FlatDetailsComponent },
+  { path: 'resident-details', component: ResidentDetailsComponent },
+  { path: 'resident-flat-details', component: ResidentFlatDetailsComponent },
+  { path: 'rent-details', component: RentDetailsComponent }
+];
 
 @NgModule({
   declarations: [
@@ -21,14 +34,22 @@ import { RentDetailFormComponent } from './rent-details/rent-detail-form/rent-de
     ResidentDetailsComponent,
     ResidentDetailFormComponent,
     RentDetailsComponent,
-    RentDetailFormComponent
+    RentDetailFormComponent,
+    ResidentFlatDetailsComponent,
+    ResidentFlatDetailFormComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
