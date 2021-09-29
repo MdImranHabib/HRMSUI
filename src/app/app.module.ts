@@ -17,9 +17,11 @@ import { ResidentFlatDetailFormComponent } from './resident-flat-details/residen
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'flat-details', component: FlatDetailsComponent },
   { path: 'resident-details', component: ResidentDetailsComponent },
   { path: 'resident-flat-details', component: ResidentFlatDetailsComponent },
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     ResidentFlatDetailsComponent,
     ResidentFlatDetailFormComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
