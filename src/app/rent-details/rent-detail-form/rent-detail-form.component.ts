@@ -17,10 +17,6 @@ export class RentDetailFormComponent implements OnInit {
     public flatService:FlatDetailService,
     private toastr:ToastrService) { }
 
-  ngOnInit(): void { 
-    this.flatService.getFlatList();
-  }
-
   currentYear = new Date().getFullYear();
   months = [
     "January-" + this.currentYear,
@@ -35,9 +31,13 @@ export class RentDetailFormComponent implements OnInit {
     "October-" + this.currentYear,
     "November-" + this.currentYear,
     "December-" + this.currentYear
-  ];
+  ]; 
 
-  onSubmit(form:NgForm){   
+  ngOnInit(): void { 
+    this.flatService.getFlatList();
+  }  
+
+  onSubmit(form:NgForm){  
     if(this.service.formData.id == 0){     
       this.insertRecord(form);
     }
@@ -77,6 +77,47 @@ export class RentDetailFormComponent implements OnInit {
   resetForm(form:NgForm){
     form.form.reset();
     this.service.formData = new RentDetail();
+  }
+
+  flatChanged(flatId:any){    
+    flatId = Number(flatId);
+    this.flatService.getFlatDetails(flatId);    
+  }
+
+  flatRentChanged(value:number){  
+    var flatRent = value;
+    var electricBill = this.service.formData.electricBill;
+    var gasBill = this.service.formData.gasBill;
+    var waterBill = this.service.formData.waterBill;
+
+    this.service.formData.totalBill = flatRent + electricBill + gasBill + waterBill;
+  }
+
+  electricBillChanged(value:number){  
+    var flatRent = this.flatService.formData.rent;
+    var electricBill = value;
+    var gasBill = this.service.formData.gasBill;
+    var waterBill = this.service.formData.waterBill;
+
+    this.service.formData.totalBill = flatRent + electricBill + gasBill + waterBill;
+  }
+
+  gasBillChanged(value:number){
+    var flatRent = this.flatService.formData.rent;
+    var electricBill = this.service.formData.electricBill;
+    var gasBill = value;
+    var waterBill = this.service.formData.waterBill;
+
+    this.service.formData.totalBill = flatRent + electricBill + gasBill + waterBill;
+  }
+
+  waterBillChanged(value:number){
+    var flatRent = this.flatService.formData.rent;
+    var electricBill = this.service.formData.electricBill;
+    var gasBill = this.service.formData.gasBill;
+    var waterBill = value;
+
+    this.service.formData.totalBill = flatRent + electricBill + gasBill + waterBill;
   }
 
 }

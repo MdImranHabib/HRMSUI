@@ -12,7 +12,6 @@ export class ResidentDetailService {
 
   formData: ResidentDetail= new ResidentDetail();
   residentList: ResidentDetail[];
-  resident:ResidentDetail;
 
   postResidentDetail(){
     return this.http.post(environment.baseURL + 'api/residents', this.formData);
@@ -35,6 +34,6 @@ export class ResidentDetailService {
   getResidentDetails(id:number){    
     this.http.get(environment.baseURL + 'api/residents/' + id)
     .toPromise()
-    .then(res => this.resident = res as ResidentDetail);
+    .then(res => this.formData = res as ResidentDetail);
   }
 }

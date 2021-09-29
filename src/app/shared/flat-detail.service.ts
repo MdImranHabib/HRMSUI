@@ -12,9 +12,9 @@ export class FlatDetailService {
 
   formData: FlatDetail= new FlatDetail();
   flatList: FlatDetail[];
-  flat:FlatDetail;
 
   postFlatDetail(){
+    this.formData.status = Boolean(this.formData.status);
     return this.http.post(environment.baseURL + 'api/flats', this.formData);
   }
 
@@ -35,6 +35,6 @@ export class FlatDetailService {
   getFlatDetails(id:number){    
     this.http.get(environment.baseURL + 'api/flats/' + id)
     .toPromise()
-    .then(res => this.flat = res as FlatDetail);
+    .then(res => this.formData = res as FlatDetail);
   }
 }

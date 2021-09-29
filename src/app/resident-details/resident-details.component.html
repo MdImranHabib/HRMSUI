@@ -2,30 +2,33 @@
     <h3 class="display-5 text-center">Resident Detail Register</h3>
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <app-resident-detail-form></app-resident-detail-form>
-    </div>
-    <div class="col-md-8">
+    </div>    
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
         <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th>Name</th>
-                    <!-- <th>Email</th> -->
+                    <th>Email</th>
                     <th>Contact No</th>
                     <th>NID No</th>
                     <th>Occupation</th>
-                    <!-- <th>Open Balance</th> -->
+                    <th>Open Balance</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let resident of service.residentList">
                     <td (click)="populateForm(resident)">{{resident.name}}</td>
-                    <!-- <td (click)="populateForm(resident)">{{resident.email}}</td> -->
+                    <td (click)="populateForm(resident)">{{resident.email}}</td>
                     <td (click)="populateForm(resident)">{{resident.contactNo}}</td>
                     <td (click)="populateForm(resident)">{{resident.nidNo}}</td>
                     <td (click)="populateForm(resident)">{{resident.occupation}}</td>
-                    <!-- <td (click)="populateForm(resident)">{{resident.openingBalance}}</td> -->
+                    <td (click)="populateForm(resident)">{{resident.openingBalance}}</td>
                     <td>                        
                         <i class="fa fa-info-circle fa-lg text-info" (click)="onDetails(resident.id)"></i>&nbsp;|
                         <i class="fa fa-trash-alt fa-lg text-danger" (click)="onDelete(resident.id)"></i>

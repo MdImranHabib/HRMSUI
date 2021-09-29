@@ -1,40 +1,31 @@
 <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
     <input type="hidden" name="id" [value]="service.formData.id" />
-    <div class="form-group">
-        <label>NAME</label>
-        <input class="form-control" placeholder="Resident's Name" name="name" #name="ngModel"
-            [(ngModel)]="service.formData.name" required maxlength="100" [class.invalid]="name.invalid && name.touched">
-    </div>
-    <div class="form-group">
-        <label>EMAIL</label>
-        <input class="form-control" placeholder="Email Address" name="email" #email="ngModel"
-            [(ngModel)]="service.formData.email" maxlength="100" [class.invalid]="email.invalid && email.touched">
-    </div>
-    <div class="form-group">
-        <label>CONTACT NO</label>
-        <input class="form-control" placeholder="Contact Number" name="contactNo" #contactNo="ngModel"
-            [(ngModel)]="service.formData.contactNo" required minlength="11" maxlength="15"
-            [class.invalid]="contactNo.invalid && contactNo.touched">
-    </div>
-    <div class="form-group">
-        <label>NID NO</label>
-        <input class="form-control" placeholder="NID Number" name="nidNo" #nidNo="ngModel"
-            [(ngModel)]="service.formData.nidNo" required maxlength="17"
-            [class.invalid]="nidNo.invalid && nidNo.touched">
-    </div>
-    <div class="form-group">
-        <label>PHOTO PATH</label>
-        <input class="form-control" placeholder="Photo Path" name="photoPath" #photoPath="ngModel"
-            [(ngModel)]="service.formData.photoPath" [class.invalid]="photoPath.invalid && photoPath.touched">
-    </div>
-    <div class="form-group">
-        <label>PREVIOUS ADDRESS</label>
-        <textarea class="form-control" rows="3" placeholder="Previous Address" name="prevAddress" #prevAddress="ngModel"
-            [(ngModel)]="service.formData.prevAddress" maxlength="200">
-        </textarea>
-    </div>
     <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-3">
+            <label>NAME</label>
+            <input class="form-control" placeholder="Resident's Name" name="name" #name="ngModel"
+                [(ngModel)]="service.formData.name" required maxlength="100" [class.invalid]="name.invalid && name.touched">
+        </div>
+        <div class="form-group col-md-3">
+            <label>EMAIL</label>
+            <input class="form-control" placeholder="Email Address" name="email" #email="ngModel"
+                [(ngModel)]="service.formData.email" maxlength="100" [class.invalid]="email.invalid && email.touched">
+        </div>
+        <div class="form-group col-md-3">
+            <label>CONTACT NO</label>
+            <input class="form-control" placeholder="Contact Number" name="contactNo" #contactNo="ngModel"
+                [(ngModel)]="service.formData.contactNo" required minlength="11" maxlength="15"
+                [class.invalid]="contactNo.invalid && contactNo.touched">
+        </div>
+        <div class="form-group col-md-3">
+            <label>NID NO</label>
+            <input class="form-control" placeholder="NID Number" name="nidNo" #nidNo="ngModel"
+                [(ngModel)]="service.formData.nidNo" required maxlength="17"
+                [class.invalid]="nidNo.invalid && nidNo.touched">
+        </div>
+    </div>       
+    <div class="row">
+        <div class="form-group col-md-3">
             <label>OCCUPATION</label>
             <select class="form-control" placeholder="Select Occupation" name="occupation" #occupation="ngModel"
                 [(ngModel)]="service.formData.occupation" required
@@ -43,11 +34,22 @@
                 <option value="Job">Job</option>
             </select>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-3">
             <label>OPENING BALANCE</label>
             <input type="number" class="form-control" placeholder="Opening Balance" name="openingBalance"
                 #openingBalance="ngModel" [(ngModel)]="service.formData.openingBalance"
                 [class.invalid]="openingBalance.invalid && openingBalance.touched">
+        </div>
+        <div class="form-group col-md-3">
+            <label>PHOTO PATH</label>
+            <input class="form-control" placeholder="Photo Path" name="photoPath" #photoPath="ngModel"
+                [(ngModel)]="service.formData.photoPath" [class.invalid]="photoPath.invalid && photoPath.touched">
+        </div>
+        <div class="form-group col-md-3">
+            <label>PREVIOUS ADDRESS</label>
+            <textarea class="form-control" rows="3" placeholder="Previous Address" name="prevAddress" #prevAddress="ngModel"
+                [(ngModel)]="service.formData.prevAddress" maxlength="200">
+            </textarea>
         </div>
     </div>
     <div class="form-group">

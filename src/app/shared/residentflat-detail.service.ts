@@ -12,7 +12,6 @@ export class ResidentFlatDetailService {
 
   formData: ResidentFlatDetail= new ResidentFlatDetail();
   residentFlatList: ResidentFlatDetail[];
-  residentFlat:ResidentFlatDetail;
 
   postResidentFlatDetail(){
     this.formData.flatId = Number(this.formData.flatId); 
@@ -39,6 +38,6 @@ export class ResidentFlatDetailService {
   getResidentFlatDetails(id:number){    
     this.http.get(environment.baseURL + 'api/residentFlats/' + id)
     .toPromise()
-    .then(res => this.residentFlat = res as ResidentFlatDetail);
+    .then(res => this.formData = res as ResidentFlatDetail);
   }
 }
