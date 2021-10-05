@@ -1,0 +1,21 @@
+<form class="form-signin" novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <div class="text-center mb-4">
+      <!-- <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">       -->
+      <h3>Log-In</h3>
+    </div>
+  
+    <div class="form-label-group">
+      <input class="form-control" placeholder="Email address" name="userName" #userName="ngModel"
+      [(ngModel)]="service.loginFormData.userName" required autofocus [class.invalid]="userName.invalid && userName.touched">
+      <label for="userName">User Name</label>
+    </div>
+  
+    <div class="form-label-group">
+      <input type="password" class="form-control" placeholder="Password" name="password" #password="ngModel"
+      [(ngModel)]="service.loginFormData.password" required [class.invalid]="password.invalid && password.touched">
+      <label for="inputPassword">Password</label>
+    </div>
+      
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+    <!-- <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2021</p> -->
+  </form>
