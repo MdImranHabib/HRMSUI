@@ -11,9 +11,8 @@ import { Login } from '../shared/login.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  obj:any;
-  loginModel:Login;
+ 
+  //loginModel:Login;
 
   constructor(public service:AuthService,
     private toastr:ToastrService,
@@ -22,19 +21,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form:NgForm){   
+  onSubmit(form:NgForm){ 
+    debugger  
     if(form.valid){
-      this.service.login().subscribe(res =>{               
-        this.loginModel = res as any;
-        this.router.navigate(['/dashboard']);
-        this.toastr.success('Login Successful!');       
-        
-      },
-      err =>{
-        console.log(err);
-        this.toastr.error('Login Failed');
-      });
+      this.service.login().subscribe(
+        (next) => {
+          this.toastr.success('Login Successful!');   
+        },
+        (error) => {
+          console.log(error);
+          this.toastr.error('Login Failed');
+        },
+        () => {
+          this.router.navigate(['/dashboard']);
+        }
+      );
     }
-  }
+  }  
 
 }
