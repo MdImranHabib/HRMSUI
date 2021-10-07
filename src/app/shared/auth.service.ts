@@ -25,7 +25,7 @@ export class AuthService {
   //   return this.http.post(environment.baseURL + 'api/auth', this.loginFormData,{withCredentials:true});
   // }  
 
-  login() {
+  logIn() {
     return this.http.post(environment.baseURL + 'api/auth', this.loginFormData).pipe(
       map((response: any) => {
         const user = response;
@@ -36,6 +36,10 @@ export class AuthService {
       })
     );
   }
+
+  logOut() {
+    localStorage.removeItem('token');  
+  } 
   
   loggedIn() {
     const token = localStorage.getItem('token');

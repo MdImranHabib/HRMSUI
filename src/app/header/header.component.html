@@ -5,7 +5,22 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">           
+          <ul class="navbar-nav" *ngIf="!authenticated">           
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/">Home</a>
+            </li>             
+             <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Flat
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" routerLink="/flat-list">Flat List</a>
+                <a class="dropdown-item" routerLink="/create-flat">Add Flat</a>               
+              </div>
+            </li> -->                 
+          </ul>
+
+          <ul class="navbar-nav" *ngIf="authenticated">           
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link" routerLink="/dashboard">Home</a>
             </li> 
@@ -20,17 +35,12 @@
             </li> 
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link" routerLink="rent-details">Rents</a>
-            </li>       
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Flat
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" routerLink="/flat-list">Flat List</a>
-                <a class="dropdown-item" routerLink="/create-flat">Add Flat</a>               
-              </div>
-            </li> -->
+            </li>  
+            <li class="nav-item ">
+              <a class="nav-link" routerLink="/" (click)="logOut()">LogOut</a>
+            </li>                 
           </ul>
+          
         </div>
       </nav>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Emitters } from '../emitters/emitters';
 import { AuthService } from '../shared/auth.service';
 import { Login } from '../shared/login.model';
 
@@ -19,17 +20,19 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    Emitters.authEmitter.emit(false);
   }
 
-  onSubmit(form:NgForm){ 
-    debugger  
+  onSubmit(form:NgForm){     
     if(form.valid){
-      this.service.login().subscribe(
+      this.service.logIn().subscribe(
         (next) => {
+          Emitters.authEmitter.emit(true);
           this.toastr.success('Login Successful!');   
         },
         (error) => {
           console.log(error);
+          Emitters.authEmitter.emit(false);
           this.toastr.error('Login Failed');
         },
         () => {
