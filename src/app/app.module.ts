@@ -21,8 +21,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  // { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'flat-details', component: FlatDetailsComponent },
   { path: 'resident-details', component: ResidentDetailsComponent },
