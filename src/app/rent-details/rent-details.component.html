@@ -37,6 +37,7 @@
                     <td (click)="populateForm(rent)">{{rent.totalBill - rent.paid}}</td>
                     <td>                        
                         <i class="fa fa-info-circle fa-lg text-info" (click)="onDetails(rent.id)"></i>&nbsp;|
+                        <i class="fa fa-print fa-lg text-success" (click)="showReport(rent)"></i>&nbsp;|
                         <i class="fa fa-trash-alt fa-lg text-danger" (click)="onDelete(rent.id)"></i>
                     </td>
                 </tr>
