@@ -4,6 +4,7 @@ import { RentDetail } from '../shared/rent-detail.model';
 import { RentDetailService } from '../shared/rent-detail.service';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { DatePipe, getLocaleDateFormat, getLocaleDateTimeFormat } from '@angular/common';
 
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -50,10 +51,36 @@ export class RentDetailsComponent implements OnInit {
   showReport(rent:RentDetail){
     var dd = {
       content: [
-        'First paragraph',
-        'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+        {          
+          text:'Rent Receipt\n\n',
+          fontSize:18          
+        },
+        {     
+          columns: [
+            {
+              text: 'Flat Name: ' + rent.flat.name + '\n' +
+                    'Rent Mont: ' + rent.rentMonth          
+            },
+            {
+              text: 'Print Date: ' + new Date().getDate() + '-' + new Date().getMonth() + '-' + new Date().getFullYear() + '\n' +
+                    'Print Time: ' + new Date().getHours() + ':' + new Date().getMinutes() + '\n\n'
+            }
+          ]
+        },
+        {         
+          table: {
+            body: [
+              ['Flat Rent', 'Electric Bill', 'Gas Bill', 'Water Bill'],
+              [rent.flatRent, rent.electricBill, rent.gasBill, rent.waterBill]     
+            ]
+          }
+        },
+        {
+          text: '\n\nTotal: ' + rent.totalBill + ' Tk.\n\n' +
+                'Paid: ' + rent.paid + ' Tk.\n\n' +
+                'Due: ' + (rent.totalBill - rent.paid) + ' Tk.'
+        }
       ]
-      
     }
     
 
