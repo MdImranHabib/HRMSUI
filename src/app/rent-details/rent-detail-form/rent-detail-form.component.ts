@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FlatDetailService } from 'src/app/shared/flat-detail.service';
 import { RentDetail } from 'src/app/shared/rent-detail.model';
 import { RentDetailService } from 'src/app/shared/rent-detail.service';
+import { RentDetailsComponent } from '../rent-details.component';
 
 @Component({
   selector: 'app-rent-detail-form',
@@ -15,7 +16,8 @@ export class RentDetailFormComponent implements OnInit {
 
   constructor(public service:RentDetailService,
     public flatService:FlatDetailService,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService,
+    public rentDetails: RentDetailsComponent) { }
 
   currentYear = new Date().getFullYear();
   months = [
@@ -48,10 +50,11 @@ export class RentDetailFormComponent implements OnInit {
 
   insertRecord(form:NgForm){
     this.service.postRentDetail().subscribe(
-      res => {
+      res => {   
+        this.rentDetails.showReport(res); 
         this.resetForm(form);
         this.service.getRentList();
-        this.toastr.success('Saved Successfully!', 'Rent Detail Register');
+        //this.toastr.success('Saved Successfully!', 'Rent Detail Register');        
       },
       err => {
         console.log(err);

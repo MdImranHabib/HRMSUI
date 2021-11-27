@@ -4,7 +4,6 @@ import { RentDetail } from '../shared/rent-detail.model';
 import { RentDetailService } from '../shared/rent-detail.service';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { DatePipe, getLocaleDateFormat, getLocaleDateTimeFormat } from '@angular/common';
 
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -48,40 +47,75 @@ export class RentDetailsComponent implements OnInit {
     this.service.getRentDetails(id);   
   }
 
-  showReport(rent:RentDetail){
+  showReport(rent:any){
     var dd = {
+      watermark: { text: 'PAID', opacity: 0.05, bold: true, italics: false },     
       content: [
         {          
           text:'Rent Receipt\n\n',
-          fontSize:18          
+          fontSize:18, 
+          bold:true,                 
         },
+
         {     
           columns: [
-            {
-              text: 'Flat Name: ' + rent.flat.name + '\n' +
-                    'Rent Mont: ' + rent.rentMonth          
+            {                       
+              text: [
+                {text: 'Flat Name: ', bold: true}, rent.flat.name, '\n', 
+                {text: 'Rent Mont: ', bold: true}, rent.rentMonth
+              ]
             },
-            {
-              text: 'Print Date: ' + new Date().getDate() + '-' + new Date().getMonth() + '-' + new Date().getFullYear() + '\n' +
-                    'Print Time: ' + new Date().getHours() + ':' + new Date().getMinutes() + '\n\n'
+            {             
+              text:[
+                {text: 'Print Date: ' + new Date().getDate() + '-' + new Date().getMonth() + '-' + new Date().getFullYear() + '\n', fontSize: 10},
+                {text: 'Print Time: ' + new Date().getHours() + ':' + new Date().getMinutes(), fontSize: 10}
+              ]
             }
           ]
         },
-        {         
-          table: {
+
+        {
+          text: '\n'
+        },
+
+        {          
+          table: { 
+            headerRows: 1,
+            widths: [ '*', 'auto', 100, '*' ],                              
             body: [
-              ['Flat Rent', 'Electric Bill', 'Gas Bill', 'Water Bill'],
-              [rent.flatRent, rent.electricBill, rent.gasBill, rent.waterBill]     
-            ]
+              [
+                {fillColor:'lightblue', text:'Flat Rent'}, 
+                {fillColor:'lightblue', text:'Electric Bill'}, 
+                {fillColor:'lightblue', text:'Gas Bill'}, 
+                {fillColor:'lightblue', text:'Water Bill'}
+              ],
+              [
+                rent.flatRent, 
+                rent.electricBill, 
+                rent.gasBill, 
+                rent.waterBill
+              ]     
+            ]            
           }
         },
+
         {
-          text: '\n\nTotal: ' + rent.totalBill + ' Tk.\n\n' +
-                'Paid: ' + rent.paid + ' Tk.\n\n' +
-                'Due: ' + (rent.totalBill - rent.paid) + ' Tk.'
+          text: '\n'
+        },
+
+        {
+          text: [
+            {text: 'Total: ' + rent.totalBill + ' Tk.\n\n', bold: true},
+            {text: 'Paid: ' + rent.paid + ' Tk.\n\n', bold: true},
+            {text: 'Due: ' + (rent.totalBill - rent.paid) + ' Tk.', bold: true}
+          ]
+
+          // text: 'Total: ' + rent.totalBill + ' Tk.\n\n' +
+          //       'Paid: ' + rent.paid + ' Tk.\n\n' +
+          //       'Due: ' + (rent.totalBill - rent.paid) + ' Tk.'
         }
-      ]
-    }
+      ]      
+    };
     
 
     pdfMake.createPdf(dd).print();
